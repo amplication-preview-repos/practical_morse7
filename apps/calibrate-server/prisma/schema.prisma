@@ -1,0 +1,32 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Route {
+  completeStatus Boolean?
+  createdAt      DateTime  @default(now())
+  finish         DateTime?
+  finishLocation String?
+  id             String    @id @default(cuid())
+  owner          String?
+  start          DateTime?
+  startLocation  String?
+  updatedAt      DateTime  @updatedAt
+}
+
+model Position {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model SensorData {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
